@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamFlow — мультистрим и ретрансляции</title>
+  <style>
+    :root {
+      --accent: #ff4757;
+      --bg-dark: #0e0e0e;
+      --bg-light: #1b1b1b;
+      --text: #fff;
+      --text-muted: #aaa;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: rgba(15, 15, 15, 0.7);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    header h1 {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: var(--text);
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero video,
+    .hero::before {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero::before {
+      content: "";
+      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+      z-index: 1;
+    }
+    .hero video {
+      filter: brightness(0.55);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+    }
+    .btn {
+      background: var(--accent);
+      color: var(--text);
+      padding: 15px 35px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #ff6b81;
+    }
+
+    .section {
+      padding: 100px 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature {
+      background-color: var(--bg-light);
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .feature h4 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    .feature p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    footer {
+      background: var(--bg-light);
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2.2rem; }
+      header { padding: 15px 20px; }
+      .btn { padding: 12px 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>StreamFlow</h1>
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="demo.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <h2>Мультистриминг без компромиссов</h2>
+      <p>Ретранслируйте ваш поток на YouTube, Twitch, VK и десятки других платформ одновременно. Просто. Быстро. Надёжно.</p>
+      <button class="btn">Попробовать бесплатно</button>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <h3>Почему StreamFlow?</h3>
+    <div class="features">
+      <div class="feature">
+        <h4>Мультиплатформенный стриминг</h4>
+        <p>Запускайте один поток — транслируйте его сразу на YouTube, Twitch, VK, Telegram и любые кастомные RTMP-приёмники.</p>
+      </div>
+      <div class="feature">
+        <h4>Минимальная задержка</h4>
+        <p>Мы используем передовые CDN и алгоритмы буферизации — чтобы ваш контент доходил до зрителя мгновенно.</p>
+      </div>
+      <div class="feature">
+        <h4>Подробная аналитика</h4>
+        <p>Отслеживайте качество стрима, активность аудитории и географию подключений прямо на панели управления.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 StreamFlow. Все права защищены. | <a href="#" style="color: #ff4757;">Политика конфиденциальности</a></p>
+  </footer>
+
+</body>
+</html>
